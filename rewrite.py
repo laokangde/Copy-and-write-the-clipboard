@@ -40,7 +40,7 @@ if __name__ == '__main__':
         uu = ss.replace('\n','').replace('\r','')
 #        print(uu)
         setText(uu)
-        time.sleep(60*1)
+        time.sleep(60*1)#refresh clipboard every 60s
 #        print('RUNNING\n')
 
 
