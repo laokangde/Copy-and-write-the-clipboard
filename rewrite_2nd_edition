@@ -1,0 +1,33 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Dec 21 10:44:35 2018
+
+@author: 123
+"""
+#去除剪切板中的回车键
+import win32clipboard as wc
+import win32con
+import time
+
+def getCopyText():
+    wc.OpenClipboard()
+    copy_text = wc.GetClipboardData(win32con.CF_UNICODETEXT)
+    wc.CloseClipboard()
+    return copy_text
+
+def setText(aString):#写入剪切板  
+    wc.OpenClipboard()  
+    wc.EmptyClipboard()  
+    wc.SetClipboardText(aString)  
+    wc.CloseClipboard() 
+
+if __name__ == '__main__':
+
+    while True:
+        ss = getCopyText()
+        uu = ss.replace('\n',' ').replace('\r',' ')
+        setText(uu)
+        time.sleep(3*1)
+
+
+
