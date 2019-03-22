@@ -11,7 +11,7 @@ import time
 
 def getCopyText():
     wc.OpenClipboard()
-    copy_text = wc.GetClipboardData(win32con.CF_UNICODETEXT)
+    copy_text = wc.GetClipboardData(win32con.CF_TEXT)
     wc.CloseClipboard()
     return copy_text
 
@@ -21,10 +21,22 @@ def setText(aString):#写入剪切板
     wc.SetClipboardText(aString)  
     wc.CloseClipboard() 
 
+## test
+#import chardet
+#print( chardet.detect(getCopyText()) )  # 找到包含中文内容的字符串编码
+#print( getCopyText().decode('GB2312') ) # 转码
+#print( getCopyText() ) #输出bytes与结果对比去除效果
+    
+#ss = getCopyText().decode()
+#uu = ss.replace('\n','').replace('\r','')
+#print(uu)
+#
+#setText(uu)
+
 if __name__ == '__main__':
 
     while True:
-        ss = getCopyText()
+        ss = getCopyText().decode('utf8','ignore')
         uu = ss.replace('\n',' ').replace('\r',' ')
         setText(uu)
         time.sleep(3*1)
