@@ -36,7 +36,7 @@ def setText(aString):#写入剪切板
 if __name__ == '__main__':
 
     while True:
-        ss = getCopyText().decode('utf8','ignore')
+        ss = getCopyText().decode('GB2312','ignore')
         uu = ss.replace('\n',' ').replace('\r',' ')
         setText(uu)
         time.sleep(3*1)
